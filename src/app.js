@@ -1,11 +1,14 @@
 import express from 'express';
-import config from './config/index.js';
+import config from './config';
+import Routes from './routes';
 
 const app = express();
 const port = config.SERVER_PORT || 4000;
 
+app.use('/demo', Routes.DemoRouter);
+
 app.get('/', (req, res) => {
-  res.send('Hello, Express with ES6 Modules!');
+  res.send('Hello, Express!');
 });
 
 app.listen(port, () => {
